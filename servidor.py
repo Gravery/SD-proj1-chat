@@ -3,18 +3,18 @@ import zmq
 import linda
 
 context = zmq.Context()
-socket = context.socket(zmq.REP)
+socket = context.socket(zmq.PUB)
 socket.bind("tcp://*:5555")
-message = ''
+socketsub = context.socket(zmq.SUB)
+socketsub.connect("tcp://localhost:5555")
+message = b''
 listas = linda.Linda()
 
 #Estrutura das mensagens:
 #{comando} {tópico} {autor} {mensagem}
 while message != b'000':
     #  Wait for next request from client
-    message = socket.recv()
     split = message.split(b" ", 3)
-    print(split)
     print(f"Received request: {message}")
 
     if split[0].lower() == b"enviar":

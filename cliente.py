@@ -6,7 +6,7 @@ context = zmq.Context()
 print("Connecting to hello world server...")
 socket = context.socket(zmq.REQ)
 socket.connect("tcp://localhost:5555")
-msg = '1'
+msg = ' '
 
 while msg != '000':
     msg = input()
