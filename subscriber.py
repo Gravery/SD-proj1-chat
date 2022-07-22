@@ -3,13 +3,17 @@ import zmq
 import keyboard
 from multiprocessing import Process
 
-
-def get_key(s):
-    if keyboard.read_key() == "s":
+def choose(s):
+    choice = int(input('1 - Conectar a um endereço\n2 - Inscrever em um tópico\n3 - Seguir para recebimento de mensagens'))
+    print()
+    if choice == 1:
         new_connect(s)
-    if keyboard.read_key() == "c":
+    elif choice == 2:
         new_sub(s)
-    
+    elif choice == 3:
+        return
+    choose(s)
+
 
 def new_connect(s):
         address = input("Insert Addres[IP:PORT]: ")
@@ -19,16 +23,17 @@ def new_sub(s):
         subs = input("Digite um tópico para se inscrever: ")
         s.setsockopt_string(zmq.SUBSCRIBE, subs)
 
+
 context = zmq.Context()
 s = context.socket(zmq.SUB)
 s.connect("tcp://localhost:5555")
 s.setsockopt_string(zmq.SUBSCRIBE, "TESTE")
 
+choose(s)
 run = 1
-p1 = Process(target=get_key(s))
-p1.start()
 
 while run:
-    p1.join()
     msg = s.recv()
-    print(msg)
+    msg = msg.decode()
+    msg = msg.split(' ', 2)
+    print(f'#{msg[0]}:\n{msg[1]}: {msg[2]}\n')

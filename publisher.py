@@ -11,5 +11,4 @@ while run:
     if msg == "000":
         break
 
-    msg = msg.split(" ", 2)
-    s.send_string(f'{msg[0]}: {msg[1]}: {msg[2]}')
+    s.send_string(msg)
