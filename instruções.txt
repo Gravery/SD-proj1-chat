@@ -1,0 +1,10 @@
+Para executar ambos os arquivos é necessário python e a biblioteca zmq instalada.
+
+Ao executar o publisher, deve ser escolhida a port para criar uma conexão, prosseguindo depois
+para o loop de envio de mensagens. O formato de envio está explicitado no próprio texto que prepara
+o recebimento da mensagem.
+
+Ao executar o subscriber existirão 3 opções, possibilitando que o usuário conecte-se a diversos
+por meio dos endereços dos mesmos e se inscreva em diversos tópicos de seu interesse. Após a realização
+de todas conexões e inscrições em tópicos faz-se o prosseguimento para o recebimento de mensagens, de
+todos os tópicos inscritos de todos endereços conectados 

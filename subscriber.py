@@ -17,7 +17,7 @@ def choose(s):
 
 #Função para conectar a um novo endereço a partir do IP + port
 def new_connect(s):
-        address = input("Insert Addres[IP:PORT]: ")
+        address = input("Insira o Endereço[IP:PORT]: ")
         s.connect(f"tcp://{address}")
 
 #Função para inscrição em um tópico gerenciado pela bilbioteca zmq
