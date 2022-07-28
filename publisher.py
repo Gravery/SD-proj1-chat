@@ -1,3 +1,7 @@
+#Alunos:
+#Guilherme Calça - RA 790759
+#Pedro Lealdini do Prado Borges - RA 790894
+
 #Programa para rodar um publisher
 
 #Import da biblioteca zmq
