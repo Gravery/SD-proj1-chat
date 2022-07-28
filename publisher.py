@@ -24,4 +24,8 @@ while run:
         break
     
     #Envio gerenciado pela biblioteca para todos inscritos
-    s.send_string(msg)
+    if len(msg.split(" ")) >= 3:
+        s.send_string(msg)
+        print("\nMensagem enviada com sucesso!\n\n")
+    else:
+        print("\nFormato inválido, tente novamente\n\n")
